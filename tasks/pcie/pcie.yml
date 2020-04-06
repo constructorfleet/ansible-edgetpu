@@ -1,0 +1,36 @@
+---
+
+- name: Clear blacklist flag
+  set_fact:
+    blacklist-apex: false
+
+- name: Get kernel release
+  command: uname -r
+  register: kernel_release
+
+- name: Get kernel release major/minor
+  set_fact:
+    release_major: '{{ kernel_release.stdout.split(".")[0] | int }}'
+    release_minor: '{{ kernel_release.stdout.split(".")[1] | int ]}'
+
+- name: Workaround to disable Apex and Gasket
+  include_tasks:
+    file: disable_apex_and_gasket.yml
+  when:
+    - release_major >= 4
+    - release_minor > 18
+
+- name: Install PCIe driver
+  include_tasks:
+    file: install_pcie_driver
+
+- name: Delete blacklist file
+  file:
+    path: '{{ apex_blacklist_file }}'
+    state: abset
+  when: blacklist-apex
+
+- name: Reboot after removing blacklist
+  include_tasks:
+    file: reboot.yml
+  when: blacklist-apex

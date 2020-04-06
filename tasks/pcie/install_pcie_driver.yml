@@ -1,0 +1,10 @@
+---
+
+- name: Install Gasket-DKMS
+  package:
+    name: gasket-dkms
+    state: present
+
+- name: Reboot system
+  include_tasks:
+    file: reboot.yml

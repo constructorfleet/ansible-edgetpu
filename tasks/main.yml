@@ -1,0 +1,19 @@
+---
+
+- name: Add EdgeTPU apt key
+  apt_key:
+    url: '{{ https://packages.cloud.google.com/apt/doc/apt-key.gpg }}'
+    state: present
+
+- name: Add EdgeTPU apt source
+  apt_repository:
+    repo: '{{ edgetpu_apt_source }}'
+    file: coral-edgetpu.list
+    state: present
+    update_cache: yes
+
+- name: Install PCI-e/m.2 drivers
+  include_tasks:
+    file: pcie/pcie.yml
+  when:
+    - m2 or pcie

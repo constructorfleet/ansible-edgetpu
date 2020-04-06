@@ -1,0 +1,20 @@
+---
+
+- name: Set blacklist flag
+  set_fact:
+    blacklist-apex: true
+
+- name: Blacklist Apex and Gasket modules
+  copy:
+    src: blacklist-apex.conf
+    dest: '{{ apex_blacklist_file }}'
+    mode: 0666
+
+- name: Reboot system
+  reboot:
+
+- name: Wait for connection
+  wait_for_connection:
+    delay: 60
+    sleep: 30
+    timeout: 360
