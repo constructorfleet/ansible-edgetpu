@@ -1,6 +1,6 @@
 ---
 
-apex_blacklist_file: /etc/modprobe.d/blacklist-apex.conf
+edgetpu_apex_blacklist_file: /etc/modprobe.d/blacklist-apex.conf
 
 edgetpu_apt_source: deb https://packages.cloud.google.com/apt coral-edgetpu-stable main
-google_apt_key: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+edgetpu_apt_key: https://packages.cloud.google.com/apt/doc/apt-key.gpg

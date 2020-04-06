@@ -2,7 +2,7 @@
 
 - name: Add EdgeTPU apt key
   apt_key:
-    url: '{{ google_apt_key }}'
+    url: '{{ edgetpu_apt_key }}'
     state: present
 
 - name: Add EdgeTPU apt source
@@ -16,4 +16,4 @@
   include_tasks:
     file: pcie/pcie.yml
   when:
-    - m2 or pcie
+    - edgetpu_m2 or edgetpu_pcie

@@ -1,4 +1,4 @@
 ---
 
-m2: True
-pcie: True
+edgetpu_m2: True
+edgetpu_pcie: True

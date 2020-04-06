@@ -7,7 +7,7 @@
 - name: Blacklist Apex and Gasket modules
   copy:
     src: blacklist-apex.conf
-    dest: '{{ apex_blacklist_file }}'
+    dest: '{{ edgetpu_apex_blacklist_file }}'
     mode: 0666
 
 - name: Reboot system

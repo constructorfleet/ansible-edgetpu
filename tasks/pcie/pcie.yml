@@ -26,7 +26,7 @@
 
 - name: Delete blacklist file
   file:
-    path: '{{ apex_blacklist_file }}'
+    path: '{{ edgetpu_apex_blacklist_file }}'
     state: abset
   when: blacklist-apex
 
