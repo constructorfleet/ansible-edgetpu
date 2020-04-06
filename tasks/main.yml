@@ -2,7 +2,7 @@
 
 - name: Add EdgeTPU apt key
   apt_key:
-    url: '{{ https://packages.cloud.google.com/apt/doc/apt-key.gpg }}'
+    url: '{{ google_apt_key }}'
     state: present
 
 - name: Add EdgeTPU apt source
