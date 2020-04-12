@@ -8,7 +8,7 @@
 - name: Add EdgeTPU apt source
   apt_repository:
     repo: '{{ edgetpu_apt_source }}'
-    file: coral-edgetpu.list
+    filename: coral-edgetpu.list
     state: present
     update_cache: yes
 

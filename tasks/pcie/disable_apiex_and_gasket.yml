@@ -2,7 +2,7 @@
 
 - name: Set blacklist flag
   set_fact:
-    blacklist-apex: true
+    blacklist_apex: true
 
 - name: Blacklist Apex and Gasket modules
   copy:
